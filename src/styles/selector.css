@@ -1,0 +1,168 @@
+/* =========================================
+   BERSERK SELECTOR THEME
+   ========================================= */
+
+.selector-wrap{
+  min-height: calc(100vh - 70px);
+  display: grid;
+  place-items: center;
+  padding: 48px 18px;
+}
+
+.selector-inner{
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Centra el bloque de cards */
+.selector-inner .row{
+  width: 100%;
+  max-width: 980px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* ================= TITULOS ================= */
+
+.selector-title{
+  color:#fff;
+  font-size: clamp(2.1rem, 3vw, 2.8rem); /* ↓ antes era más grande */
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: .5px;
+}
+
+.selector-sub{
+  color: rgba(255,255,255,.75);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  margin-bottom: 35px;
+}
+
+/* ================= CARDS ================= */
+
+.selector-card{
+  cursor: pointer;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.35);
+  position: relative;
+
+  height: clamp(420px, 45vw, 600px);
+
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.selector-card:hover{
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255,255,255,.28);
+}
+
+/* ================= IMAGEN ================= */
+
+.selector-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.1) contrast(1.1);
+  transform: scale(1.05);
+  transition: transform .4s ease;
+}
+
+.selector-card:hover .selector-img{
+  transform: scale(1.1);
+}
+
+/* ================= OVERLAY ================= */
+
+.selector-overlay{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,.05) 0%,
+    rgba(0,0,0,.55) 55%,
+    rgba(0,0,0,.92) 100%
+  );
+}
+
+/* ================= BADGE ================= */
+
+.selector-badge{
+  position:absolute;
+  left:20px;
+  bottom:20px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  font-weight: 800;
+  letter-spacing:.5px;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.2);
+  backdrop-filter: blur(10px);
+  font-size: 1.1rem;
+  max-width: 75%;
+}
+
+/* Badge color */
+.selector-badge.guts{
+  background: rgba(139,0,0,.28);
+  box-shadow: 0 0 18px rgba(139,0,0,.28);
+}
+
+.selector-badge.griffith{
+  background: rgba(200,200,255,.22);
+  box-shadow: 0 0 18px rgba(200,200,255,.22);
+}
+
+/* ================= AURA (BOX SHADOW) ================= */
+
+/* GUTS – ROJO (50% menos intenso) */
+.selector-card.guts-theme:hover{
+  box-shadow:
+    0 0 18px rgba(139,0,0,.35),
+    0 0 40px rgba(255,0,0,.28),
+    0 0 70px rgba(255,0,0,.18),
+    0 0 110px rgba(255,0,0,.10);
+}
+
+/* GRIFFITH – BLANCO (50% menos intenso) */
+.selector-card.griffith-theme:hover{
+  box-shadow:
+    0 0 18px rgba(255,255,255,.40),
+    0 0 40px rgba(255,255,255,.30),
+    0 0 70px rgba(230,230,255,.22),
+    0 0 110px rgba(220,220,255,.12);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px){
+  .selector-wrap{ padding: 40px 16px; }
+  .selector-card{ height: 380px; }
+  .selector-badge{ font-size: 1rem; padding: 14px 16px; }
+}
+
+/* ================= SINOPSIS ================= */
+
+.selector-synopsis{
+  margin-top: 80px;
+  max-width: 900px;
+  text-align: center;
+}
+
+.synopsis-title{
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #fff;
+}
+
+.synopsis-text{
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,.75);
+}
