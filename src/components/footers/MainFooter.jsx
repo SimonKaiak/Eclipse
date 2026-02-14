@@ -3,7 +3,7 @@ import "../../styles/footers.css";
 
 export default function MainFooter() {
   return (
-    <footer className="bp-footer bp-footer--main">
+    <footer className="bp-footer bp-footer--main" id="footer">
       <Container fluid className="bp-footer__inner">
         
         <div className="bp-footer__col">
