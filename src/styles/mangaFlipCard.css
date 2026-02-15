@@ -8,26 +8,39 @@
   width: 100%;
   max-width: 340px;
   display: block;
-
   perspective: 1200px;
+
+  /* ✅ si el navegador lo soporta: bien */
   aspect-ratio: 2 / 3.05;
+
+  /* ✅ fallback: asegura altura mínima */
+  position: relative;
 }
 
-/* Inner (3D) */
+/* ✅ Fallback universal para navegadores que NO soportan aspect-ratio */
+.mflip::before{
+  content: "";
+  display: block;
+  padding-top: 152.5%; /* (3.05/2)*100 = 152.5% */
+}
+
+/* Inner (3D) ocupa el área creada por el ::before */
 .mflip__inner{
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
 
   transform-style: preserve-3d;
   transition: transform .6s cubic-bezier(.2,.8,.2,1);
-
-  /* ✅ evita que se corte el borde al rotar */
   will-change: transform;
+
+  transform: translateZ(0);
 }
 
-.mflip.is-flipped .mflip__inner{
-  transform: rotateY(180deg);
+/* Si el navegador soporta aspect-ratio, no uses el fallback */
+@supports (aspect-ratio: 1 / 1){
+  .mflip::before{ display: none; }
 }
 
 /* Caras */
@@ -45,8 +58,11 @@
   background: #000;
   color: #fff;
 
-  /* ✅ sombra sutil siempre */
   box-shadow: 0 12px 30px rgba(0,0,0,.45);
+}
+
+.mflip.is-flipped .mflip__inner{
+  transform: rotateY(180deg) translateZ(0);
 }
 
 /* =========================================================
@@ -96,6 +112,8 @@
    BACK
    ========================================================= */
 .mflip__back{
+  overflow: hidden;   /* evita que se corte raro */
+  min-height: 100%;
   transform: rotateY(180deg);
 
   display: grid;
@@ -105,6 +123,8 @@
   padding: 18px;
   background: #000;
 }
+
+
 
 /* Título del back (si showLabelBack=true) */
 .mflip__backTitle{
@@ -237,6 +257,7 @@
    Grid de capítulos (cuadrados) – FIX grilla estable
    ========================================================= */
 .mflip__chaptersGrid{
+  min-height: 120px;
   display: grid;
 
   /* 👇 menos columnas = cuadrados más grandes */
