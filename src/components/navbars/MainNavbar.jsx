@@ -10,7 +10,7 @@ export default function MainNavbar() {
     const el = document.getElementById(id);
     if (!el) return;
 
-    const offset = 110;
+    const offset = window.matchMedia("(max-width: 768px)").matches ? 60 : 110;
     const y = el.getBoundingClientRect().top + window.pageYOffset;
 
     window.scrollTo({

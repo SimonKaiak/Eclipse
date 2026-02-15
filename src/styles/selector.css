@@ -442,3 +442,25 @@
     transparent
   );
 }
+
+/*  Responsivo para Mangas */
+/* ================= MANGAS – FIX MOBILE (tomo 1 cortado) ================= */
+@media (max-width: 768px){
+
+  .mangas-rail{
+    justify-content: start;          /* 👈 en vez de center */
+    padding-left: 18px;              /* aire para que no se corte el 1 */
+    padding-right: 18px;
+
+    scroll-padding-left: 18px;       /* 👈 snap respetando el padding */
+    scroll-padding-right: 18px;
+
+    overflow-x: auto;
+    overflow-y: visible;             /* evita recortes raros verticales */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .manga-arc{
+    scroll-snap-align: start;        /* ya lo tienes, lo reafirmo */
+  }
+}
