@@ -1,59 +1,50 @@
 import { useState } from "react";
-import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
+import { Container, Navbar, Offcanvas } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import "../../styles/guts.css";
+import "../../styles/griffith.css";
 
-export default function GutsNavbar() {
+export default function GriffithNavbar() {
   const [show, setShow] = useState(false);
 
   return (
     <Navbar
-      variant="dark"
+      variant="light"
       sticky="top"
-      className="guts-nav"
-      style={{
-        backgroundColor: "#0a0a0a",
-
-        borderBottom: "2px solid rgba(255,0,0,.35)",
-
-        boxShadow: "0 6px 18px rgba(139,0,0,.18)",
-      }}
+      className="griffith-nav"
     >
       <Container fluid className="position-relative">
-
         {/* ☰ Hamburguesa */}
         <button
-          className="bp-burger"
+          className="bp-burger griffith-burger"
           aria-label="Abrir menú"
           onClick={() => setShow(true)}
         >
           ☰
         </button>
 
-        {/* Logo centrado */}
+        {/* Brand centrado: Eclipse */}
         <Navbar.Brand
           as={NavLink}
           to="/"
           end
-          className="bp-brand position-absolute start-50 translate-middle-x fw-bold"
-          style={{ color: "#b30000" }}
+          className="bp-brand griffith-brand position-absolute start-50 translate-middle-x fw-bold"
         >
           °-_ Eclipse _-°
         </Navbar.Brand>
 
-        {/* Offcanvas vacío por ahora */}
+        {/* Offcanvas (vacío por ahora) */}
         <Offcanvas
           show={show}
           onHide={() => setShow(false)}
           placement="start"
-          className="bp-offcanvas"
+          className="griffith-offcanvas"
           transition={false}
           restoreFocus={false}
           autoFocus={false}
           enforceFocus={false}
         >
-          <Offcanvas.Header closeButton closeVariant="white">
-            <Offcanvas.Title className="bp-offcanvas-title">
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title className="griffith-offcanvas-title">
               {/* vacío por ahora */}
             </Offcanvas.Title>
           </Offcanvas.Header>
@@ -62,7 +53,6 @@ export default function GutsNavbar() {
             {/* vacío intencionalmente */}
           </Offcanvas.Body>
         </Offcanvas>
-
       </Container>
     </Navbar>
   );

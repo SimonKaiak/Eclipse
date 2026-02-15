@@ -1,0 +1,211 @@
+/* =========================================================
+   griffith.css – Theme completo (Nav + Burger + Offcanvas + Page)
+   Blanco / Plata / Negro (limpio, sin duplicados)
+   ========================================================= */
+
+/* =========================
+   1) NAVBAR – Griffith (plata)
+   ========================= */
+
+.navbar.griffith-nav{
+  height: 64px;                 /* ✅ altura fija */
+  padding: 0 !important;         /* ✅ evita padding default de Bootstrap */
+  display: flex;
+  align-items: center;
+
+  background: linear-gradient(
+    180deg,
+    #e6e6e6 0%,
+    #d6d6d6 50%,
+    #c9c9c9 100%
+  );
+
+  border-bottom: 1px solid rgba(0,0,0,.20);
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.45);
+
+  position: relative;            /* para la línea inferior */
+}
+
+/* Línea inferior “glow” blanco (tipo Guts pero plata) */
+.navbar.griffith-nav::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+
+  height:1px;
+
+  background: rgba(0,0,0,.28); /* línea negra fina */
+}
+
+/* Container: ocupa la altura y centra */
+.griffith-nav .container-fluid{
+  height: 100%;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* =========================
+   2) BRAND – Eclipse (centrado)
+   ========================= */
+
+/* Brand: igual a main/guts (NO tocar top ni translateY) */
+.griffith-brand{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  line-height: 1;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #0b0b0b !important;
+  letter-spacing: 3px;
+
+  transition:
+    color .2s ease,
+    text-shadow .2s ease,
+    filter .2s ease;
+}
+
+.griffith-brand:hover{
+  color: #000 !important;
+
+  text-shadow:
+    0 0 6px rgba(255,255,255,1),
+    0 0 14px rgba(255,255,255,.95),
+    0 0 28px rgba(255,255,255,.75),
+    0 0 60px rgba(255,255,255,.45);
+
+  filter:
+    drop-shadow(0 0 14px rgba(255,255,255,.75))
+    drop-shadow(0 0 32px rgba(255,255,255,.45))
+    drop-shadow(0 0 70px rgba(255,255,255,.25));
+}
+
+/* =========================
+   3) HAMBURGUESA – Griffith
+   ========================= */
+
+.griffith-burger{
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+  line-height: 1;
+
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.22);
+
+  background: rgba(255,255,255,.60);
+  color: #0b0b0b;
+  font-size: 22px;
+
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+
+  text-shadow:
+    0 0 6px rgba(255,255,255,.65),
+    0 0 14px rgba(255,255,255,.35);
+
+  box-shadow: 0 0 10px rgba(255,255,255,.18);
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    background .2s ease,
+    box-shadow .2s ease,
+    text-shadow .2s ease,
+    color .2s ease;
+}
+
+.griffith-burger:hover{
+  transform: translateY(-1px);
+
+  border-color: rgba(0,0,0,.38);
+  background: rgba(255,255,255,.85);
+  color: #000;
+
+  text-shadow:
+    0 0 10px rgba(255,255,255,.90),
+    0 0 22px rgba(255,255,255,.55);
+
+  box-shadow: 0 0 16px rgba(255,255,255,.26);
+}
+
+/* =========================
+   4) OFFCANVAS – Griffith (blanco)
+   ========================= */
+
+.offcanvas.griffith-offcanvas{
+  background: #ffffff !important;
+  border-right: 1px solid rgba(0,0,0,.12);
+  color: #111;
+}
+
+.griffith-offcanvas .offcanvas-header{
+  padding: 22px 18px 16px;
+  border-bottom: 1px solid rgba(0,0,0,.10);
+
+  background: linear-gradient(180deg, #ffffff 0%, #f2f2f2 100%);
+}
+
+.griffith-offcanvas .offcanvas-title,
+.griffith-offcanvas-title{
+  width: 100%;
+  text-align: center;
+
+  color: rgba(0,0,0,.78);
+  font-weight: 900;
+  letter-spacing: .6px;
+  font-size: 1.05rem;
+}
+
+/* Links dentro del panel (si los agregas después) */
+.griffith-offcanvas a,
+.griffith-offcanvas .nav-link,
+.griffith-offcanvas button{
+  color: rgba(0,0,0,.72);
+}
+
+.griffith-offcanvas a:hover,
+.griffith-offcanvas .nav-link:hover,
+.griffith-offcanvas button:hover{
+  color: #000;
+  text-shadow: 0 0 10px rgba(255,255,255,.65);
+}
+
+/* =========================
+   5) PAGE – Griffith (fondo blanco)
+   ========================= */
+
+.griffith-page{
+  min-height: calc(100vh - 70px);
+  background: #ffffff;
+  color: #111;
+}
+
+.griffith-content{
+  padding-top: 42px;
+  padding-bottom: 50px;
+}
+
+.griffith-title{
+  color: #111;
+  text-shadow: 0 10px 22px rgba(0,0,0,.10);
+  font-weight: 900;
+  letter-spacing: .3px;
+}
+
+.griffith-sub{
+  color: rgba(0,0,0,.65);
+}

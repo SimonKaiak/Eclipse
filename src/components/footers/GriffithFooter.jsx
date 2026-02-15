@@ -3,16 +3,28 @@ import "../../styles/footers.css";
 
 export default function GriffithFooter() {
   return (
-    <footer className="bp-footer bp-footer--griffith">
+    <footer className="bp-footer bp-footer--griffith" id="footer">
       <Container fluid className="bp-footer__inner">
-        <div>
-          <div className="bp-footer__title">Griffith • Halcón Blanco</div>
-          <div className="bp-footer__sub">Tonalidad: Blanco / Gris</div>
+
+        <div className="bp-footer__col">
+          <div className="bp-footer__title">Eclipse</div>
+          <div className="bp-footer__sub">
+            Proyecto visual inspirado en la obra de Kentaro Miura.
+          </div>
         </div>
 
-        <div className="bp-footer__right">
-          <span>Modo Griffith</span>
+        <div className="bp-footer__col">
+          <div className="bp-footer__section-title">Contacto</div>
+          <div className="bp-footer__contact">📱 +56 9 5968 7211</div>
+          <div className="bp-footer__contact">✉ christiantroncoso17@gmail.com</div>
         </div>
+
+        <div className="bp-footer__col">
+          <div className="bp-footer__section-title">Información</div>
+          <div className="bp-footer__meta">Fan project • NoLimits</div>
+          <div className="bp-footer__meta">© {new Date().getFullYear()}</div>
+        </div>
+
       </Container>
     </footer>
   );

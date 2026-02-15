@@ -1,7 +1,20 @@
+/* =========================================================
+   footers.css – Base + Themes (Main / Guts / Griffith)
+   Sin duplicados, ordenado y “a prueba de pisadas”
+   ========================================================= */
+
+/* =========================
+   1) BASE (estructura común)
+   ========================= */
+
 .bp-footer{
   border-top: 1px solid rgba(255,255,255,.08);
   padding: 50px 30px;
   margin-top: 100px;
+}
+
+/* ✅ Fondo negro SOLO para Main (cuando NO es theme) */
+.bp-footer:not(.bp-footer--guts):not(.bp-footer--griffith){
   background: #0b0b0b;
 }
 
@@ -17,10 +30,9 @@
   padding: 0 60px;
 }
 
-.bp-footer__col{
-  min-width: 250px;
-}
+.bp-footer__col{ min-width: 250px; }
 
+/* Tipografía base (Main) */
 .bp-footer__title{
   color: #fff;
   font-weight: 800;
@@ -46,27 +58,17 @@
   margin-bottom: 6px;
 }
 
-.bp-footer__contact:hover{
-  color: #fff;
-}
+.bp-footer__contact:hover{ color: #fff; }
 
 /* Desktop alignment */
-.bp-footer__col:first-child{
-  justify-self: start;
-  text-align: left;
-}
+.bp-footer__col:first-child{ justify-self: start;  text-align: left; }
+.bp-footer__col:nth-child(2){ justify-self: center; text-align: center; }
+.bp-footer__col:last-child{  justify-self: end;    text-align: right; }
 
-.bp-footer__col:nth-child(2){
-  justify-self: center;
-  text-align: center;
-}
+/* =========================
+   2) RESPONSIVE
+   ========================= */
 
-.bp-footer__col:last-child{
-  justify-self: end;
-  text-align: right;
-}
-
-/* ✅ RESPONSIVE */
 @media (max-width: 992px){
   .bp-footer__inner{
     grid-template-columns: 1fr;
@@ -82,12 +84,81 @@
 }
 
 @media (max-width: 480px){
-  .bp-footer{
-    padding: 38px 18px;
-  }
+  .bp-footer{ padding: 38px 18px; }
 
   .bp-footer__inner{
     gap: 18px;
     padding: 0 10px;
   }
+}
+
+/* =========================
+   3) THEME – GUTS (rojo/negro)
+   ========================= */
+
+.bp-footer--guts{
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255,0,0,.18);
+  box-shadow: inset 0 8px 30px rgba(139,0,0,.15);
+}
+
+.bp-footer--guts .bp-footer__title{
+  color: #ff2a2a;
+  text-shadow: 0 0 10px rgba(255,0,0,.25);
+}
+
+.bp-footer--guts .bp-footer__section-title{
+  color: #ff3a3a;
+}
+
+.bp-footer--guts .bp-footer__sub{
+  color: #c98b8b;
+}
+
+.bp-footer--guts .bp-footer__contact,
+.bp-footer--guts .bp-footer__meta{
+  color: #b87979;
+}
+
+.bp-footer--guts .bp-footer__contact:hover{
+  color: #ff4a4a;
+  text-shadow: 0 0 6px rgba(255,0,0,.35);
+}
+
+/* =========================
+   4) THEME – GRIFFITH (plata/blanco)
+   ========================= */
+
+.bp-footer--griffith{
+  background: linear-gradient(180deg, #f2f2f2 0%, #dcdcdc 100%);
+  border-top: 1px solid rgba(0,0,0,.16);
+
+  box-shadow:
+    inset 0 10px 28px rgba(255,255,255,.65),
+    0 -8px 20px rgba(0,0,0,.06);
+}
+
+.bp-footer--griffith .bp-footer__title{
+  color: #0b0b0b;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.75),
+    0 8px 20px rgba(0,0,0,.10);
+}
+
+.bp-footer--griffith .bp-footer__section-title{
+  color: rgba(0,0,0,.85);
+}
+
+.bp-footer--griffith .bp-footer__sub{
+  color: rgba(0,0,0,.65);
+}
+
+.bp-footer--griffith .bp-footer__contact,
+.bp-footer--griffith .bp-footer__meta{
+  color: rgba(0,0,0,.60);
+}
+
+.bp-footer--griffith .bp-footer__contact:hover{
+  color: #000;
+  text-shadow: 0 0 10px rgba(255,255,255,.70);
 }

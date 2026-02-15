@@ -39,6 +39,7 @@ export default function MainNavbar() {
     <Navbar
       variant="dark"
       sticky="top"
+      className="main-nav"
       style={{ backgroundColor: "#111", borderBottom: "1px solid #222" }}
     >
       <Container fluid className="position-relative">
@@ -56,7 +57,7 @@ export default function MainNavbar() {
           end
           className="bp-brand position-absolute start-50 translate-middle-x fw-bold"
         >
-          _-° Eclipse °-_
+          °-_ Eclipse _-°
         </Navbar.Brand>
 
         <Offcanvas

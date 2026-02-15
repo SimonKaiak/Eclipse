@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+
 import MainNavbar from "./components/navbars/MainNavbar";
+import GutsNavbar from "./components/navbars/GutsNavbar";
+import GriffithNavbar from "./components/navbars/GriffithNavbar";
 
 import Home from "./pages/Home";
-import GutsNavbar from "./components/navbars/GutsNavbar";
 import GutsPanels from "./pages/GutsPanels";
 import GriffithPanels from "./pages/GriffithPanels";
 
@@ -18,18 +20,31 @@ function Layout() {
 
   return (
     <>
-      <MainNavbar />
+      {/* NAVBAR */}
+      {isGuts ? (
+        <GutsNavbar />
+      ) : isGriffith ? (
+        <GriffithNavbar />
+      ) : (
+        <MainNavbar />
+      )}
 
+      {/* PÁGINAS */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/guts" element={<><GutsNavbar /> <GutsPanels /></>} />
+        <Route path="/guts" element={<GutsPanels />} />
         <Route path="/griffith" element={<GriffithPanels />} />
-
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
-      {/* Un solo footer según ruta */}
-      {isGuts ? <GutsFooter /> : isGriffith ? <GriffithFooter /> : <MainFooter />}
+      {/* FOOTER */}
+      {isGuts ? (
+        <GutsFooter />
+      ) : isGriffith ? (
+        <GriffithFooter />
+      ) : (
+        <MainFooter />
+      )}
     </>
   );
 }

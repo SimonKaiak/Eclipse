@@ -507,14 +507,41 @@
 @media (max-width: 768px){
   .mangas-rail.mangas-rail--flip{
     grid-auto-columns: minmax(220px, 280px);
+
+    /* arranque centrado del primer tomo */
     justify-content: start;
 
-    padding-left: 18px;
-    padding-right: 18px;
+    /* “espaciador” para que el 1º quede al centro */
+    padding-left:  clamp(18px, calc(50vw - 136px), 220px);
+    padding-right: clamp(18px, calc(50vw - 142px), 220px);
 
-    scroll-padding-left: 18px;
-    scroll-padding-right: 18px;
+    /* snap respetando ese centrado */
+    scroll-padding-left:  clamp(18px, calc(50vw - 136px), 220px);
+    scroll-padding-right: clamp(18px, calc(50vw - 148px), 220px);
 
     -webkit-overflow-scrolling: touch;
   }
+
+  /* ✅ si quieres que al deslizar también “caiga” centrado */
+  .manga-arc{ scroll-snap-align: center; }
+}
+
+/* =========================
+   Eclipse Brand (UI principal) - BLANCO (FORZADO)
+   ========================= */
+.main-nav .bp-brand{
+  color: #fff !important;
+  opacity: 1 !important; /* por si bp-brand baja opacidad */
+  text-shadow:
+    0 0 6px rgba(255,255,255,.38),
+    0 0 16px rgba(255,255,255,.18);
+  transition: color .2s ease, text-shadow .2s ease, opacity .2s ease;
+}
+
+.main-nav .bp-brand:hover{
+  color: #fff !important;
+  opacity: 1 !important;
+  text-shadow:
+    0 0 10px rgba(255,255,255,.60),
+    0 0 22px rgba(255,255,255,.28);
 }
