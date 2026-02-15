@@ -1,0 +1,339 @@
+/* =========================================================
+   MangaFlipCard – Flip + grid de capítulos (negro/blanco)
+   ========================================================= */
+
+/* Contenedor clickeable */
+.mflip{
+  cursor: pointer;
+  width: 100%;
+  max-width: 340px;
+  display: block;
+
+  perspective: 1200px;
+
+  /* ✅ no usar all: unset; */
+  font: inherit;
+  color: inherit;
+
+  /* ✅ por si está dentro de grids de bootstrap */
+  user-select: none;
+}
+
+/* Inner (3D) */
+.mflip__inner{
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  aspect-ratio: 2 / 3.05;
+
+  transform-style: preserve-3d;
+  transition: transform .6s cubic-bezier(.2,.8,.2,1);
+
+  /* ✅ evita que se corte el borde al rotar */
+  will-change: transform;
+}
+
+.mflip.is-flipped .mflip__inner{
+  transform: rotateY(180deg);
+}
+
+/* Caras */
+.mflip__face{
+  position: absolute;
+  inset: 0;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  border-radius: 18px;
+  overflow: hidden;
+
+  border: 1px solid rgba(255,255,255,.14);
+  background: #000;
+  color: #fff;
+
+  /* ✅ sombra sutil siempre */
+  box-shadow: 0 12px 30px rgba(0,0,0,.45);
+}
+
+/* =========================================================
+   FRONT
+   ========================================================= */
+/* FRONT: imagen arriba + caption abajo (afuera) */
+.mflip__front{
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+/* Imagen: ocupa SOLO la fila de arriba */
+.mflip__img{
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  border-radius: 12px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.6),
+    0 0 0 1px rgba(255,255,255,.08);
+}
+
+/* Caption: debajo de la imagen */
+.mflip__caption{
+  height: 48px;
+
+  display: flex;
+  align-items: flex-start;   /* 👈 antes center */
+  justify-content: center;
+
+  padding-top: 12px;          /* 👈 controla cuánto sube */
+  padding-bottom: 0;
+
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: .2px;
+  line-height: 1;
+
+  color: #fff;
+  background: rgba(0,0,0,.92);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+
+/* =========================================================
+   BACK
+   ========================================================= */
+.mflip__back{
+  transform: rotateY(180deg);
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 12px;
+
+  padding: 18px;
+  background: #000;
+}
+
+/* Título del back (si showLabelBack=true) */
+.mflip__backTitle{
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  line-height: 1.15;
+}
+
+/* =========================================================
+   Título: Capítulos
+   ========================================================= */
+.mflip__chaptersTitle{
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: .6px;
+
+  color: rgba(255,255,255,.95);
+  text-align: center;
+
+  margin-top: 2px;
+  margin-bottom: 6px;
+
+  padding-bottom: 18px;
+
+  border-bottom: none;
+  position: relative;
+
+  /* mejora legibilidad sobre negro */
+  text-shadow: 0 1px 4px rgba(0,0,0,.6);
+}
+
+.mflip__chaptersTitle::after{
+  content:"";
+  display:block;
+  width:100%;
+  height:1px;
+  margin-top:10px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(140,0,0,.45),
+    rgba(200,0,0,.60),
+    rgba(140,0,0,.45),
+    transparent
+  );
+}
+
+/* Texto descriptivo (si lo usas) */
+.mflip__chapters{
+  font-size: .98rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,.85);
+  text-align: left;
+}
+
+/* Acciones (si las usas) */
+.mflip__actions{
+  display: block;
+  margin-top: auto;
+  gap: 10px;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+/* Botones */
+.mflip__btn{
+  width: 100%;           /* 👈 ocupa todo el ancho */
+  border-radius: 8px;    /* más rectangular */
+  padding: 12px 0;
+
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+
+  font-weight: 900;
+  cursor: pointer;
+
+  transition: background .2s ease,
+              border-color .2s ease,
+              transform .15s ease;
+}
+
+.mflip__btn:hover{
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.35);
+  transform: translateY(-1px);
+}
+
+.mflip__btn:active{
+  transform: translateY(0) scale(.99);
+}
+
+.mflip__btn--ghost{
+  opacity: .88;
+}
+
+/* =========================================================
+   Badge rango (si lo usas tipo "1–5")
+   ========================================================= */
+.mflip__range{
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 3;
+
+  min-width: 54px;
+  height: 34px;
+  padding: 0 10px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+  background: rgba(0,0,0,.88);
+  border: 1px solid rgba(255,255,255,.18);
+  color: #fff;
+
+  font-weight: 900;
+  letter-spacing: .5px;
+  font-size: .95rem;
+
+  box-shadow: 0 10px 20px rgba(0,0,0,.35);
+}
+
+/* =========================================================
+   Grid de capítulos (cuadrados) – FIX grilla estable
+   ========================================================= */
+.mflip__chaptersGrid{
+  display: grid;
+
+  /* 👇 menos columnas = cuadrados más grandes */
+  grid-template-columns: repeat(auto-fit, minmax(90px, 90px));
+  gap: 10px;
+
+  align-content: center;
+  justify-content: center;
+
+  /* ✅ si hay muchos caps, scrollea dentro */
+  overflow: auto;
+  padding-right: 2px;
+}
+
+/* Botón capítulo */
+.mflip__chapter{
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: #000;
+  border: 1px solid rgba(255,255,255,.18);
+  color: #fff;
+
+  font-weight: 900;
+  font-size: 1.05rem;
+
+  border-radius: 12px;
+
+  /* ✅ tamaño real del cuadrado */
+  height: 58px;
+  width: 100%;
+
+  /* centra el número perfectamente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    transform .15s ease,
+    background .2s ease,
+    border-color .2s ease;
+}
+
+.mflip__chapter:hover{
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.35);
+  transform: translateY(-1px);
+}
+
+.mflip__chapter:active{
+  transform: translateY(0) scale(.99);
+}
+
+/* Focus accesible */
+.mflip:focus-visible,
+.mflip__chapter:focus-visible,
+.mflip__btn:focus-visible{
+  outline: 2px solid rgba(255,255,255,.45);
+  outline-offset: 3px;
+}
+
+/* Scrollbar sutil (opcional) */
+.mflip__chaptersGrid::-webkit-scrollbar{ width: 10px; }
+.mflip__chaptersGrid::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.12);
+  border-radius: 999px;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 768px){
+  .mflip{ max-width: 320px; }
+  .mflip__back{ padding: 16px; }
+
+  .mflip__chaptersGrid{
+    /* mantiene el centrado como bloque */
+    grid-template-columns: repeat(auto-fit, minmax(78px, 78px));
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+  }
+
+  .mflip__chapter{
+    height: 56px;
+    font-size: 1.05rem;
+    border-radius: 12px;
+  }
+}
+

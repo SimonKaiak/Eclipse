@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-route
 import MainNavbar from "./components/navbars/MainNavbar";
 
 import Home from "./pages/Home";
-import MangaPDFs from "./pages/MangaPDFs";
 import GutsNavbar from "./components/navbars/GutsNavbar";
 import GutsPanels from "./pages/GutsPanels";
 import GriffithPanels from "./pages/GriffithPanels";
@@ -23,7 +22,6 @@ function Layout() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/mangas" element={<MangaPDFs />} />
         <Route path="/guts" element={<><GutsNavbar /> <GutsPanels /></>} />
         <Route path="/griffith" element={<GriffithPanels />} />
 
